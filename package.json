@@ -29,7 +29,13 @@
             "language": "t4",
             "scopeName": "text.t4",
             "path": "./syntaxes/t4.tmLanguage.json"
-        }]
+        }],
+        "snippets": [
+            {
+                "language": "t4",
+                "path": "./snippets/t4snippets.json"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",

@@ -1,0 +1,50 @@
+{
+    "Template Directive": {
+        "prefix": "directive-template",
+
+        "body": [
+            "<#@ template language=\"${C#}\" inherits=\"${templateBaseClass}\" linePragmas=\"${false}\" #>"
+        ],
+        "description": "A Visual Studio Code T4 text template usually starts with a template directive, which specifies how the template should be processed. There should be no more than one template directive in a text template and any files that it includes."
+    },
+    "Parameter  Directive": {
+        "prefix": "directive-parameter",
+
+        "body": [
+            "<#@ parameter type=\"${Full.TypeName}\" name=\"${ParameterName}\" #>"
+        ],
+        "description": "The parameter directive declares properties in your template code that are initialized from values passed in from the external context. You can set these values if you write code that invokes text transformation."
+    },
+    "Output Directive": {
+        "prefix": "directive-output",
+
+        "body": [
+            "<#@ output extension=\".${cs}\" #>"
+        ],
+        "description": "The output directive is used to define the file name extension and encoding of the transformed file. Any extension is valid."
+    },
+    "Assembly Directive": {
+        "prefix": "directive-assembly",
+
+        "body": [
+            "<#@ assembly name=\"${[assembly strong name|assembly file name]}\" #>"
+        ],
+        "description": "The assembly directive loads an assembly so that your template code can use its types. The effect is similar to adding an assembly reference in a Visual Studio project."
+    },
+    "Import Directive": {
+        "prefix": "directive-import",
+
+        "body": [
+            "<#@ import namespace=\"${namespace}\" #>"
+        ],
+        "description": "The import directive allows you to refer to elements in another namespace without providing a fully-qualified name. It is the equivalent of using in C# or imports in Visual Basic."
+    },
+    "Include Directive": {
+        "prefix": "directive-include",
+
+        "body": [
+            "<#@ include file=\"${filePath}\" #>"
+        ],
+        "description": "you can include text from another file by using an <#@include#> directive. You can place include directives anywhere in a text template before the first class feature block <#+ ... #>. The included files can also contain include directives, and other directives. This allows you to share template code and boilerplate text between templates."
+    }
+}
