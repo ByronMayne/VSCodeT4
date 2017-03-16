@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="Mono.TextTemplating.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EntryPoint.cs">
+    <Files>
+      <File FileName="Mono.TextTemplating/TemplateGenerator.cs" Line="88" Column="24" />
+      <File FileName="EntryPoint.cs" Line="10" Column="4" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

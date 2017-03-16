@@ -1,0 +1,40 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "t4",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"match": "(<#[@=+]?)",
+			"name": "constant.language.t4"
+		},
+		{
+			"match": "(#>)",
+			"name": "constant.language.t4"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.t4",
+				"match": "\\b(if|while|for|return)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.t4",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.t4",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "text.t4"
+}

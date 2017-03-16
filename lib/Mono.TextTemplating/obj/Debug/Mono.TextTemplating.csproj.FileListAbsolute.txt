@@ -1,0 +1,7 @@
+C:\Users\byron\tt\lib\Mono.TextTemplating\obj\Debug\Mono.TextTemplating.exe
+C:\Users\byron\tt\lib\Mono.TextTemplating\obj\Debug\Mono.TextTemplating.csprojResolveAssemblyReference.cache
+C:\Users\byron\tt\lib\Mono.TextTemplating\bin\Mono.TextTemplating.exe
+C:\Users\byron\tt\lib\Mono.TextTemplating\bin\Mono.TextTemplating.pdb
+C:\Users\byron\tt\lib\Mono.TextTemplating\obj\Debug\Mono.TextTemplating.pdb
+C:\Users\byron\tt\lib\Mono.TextTemplating\bin\Debug\Mono.TextTemplating.exe
+C:\Users\byron\tt\lib\Mono.TextTemplating\bin\Debug\Mono.TextTemplating.pdb

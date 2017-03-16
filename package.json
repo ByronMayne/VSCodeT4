@@ -1,0 +1,47 @@
+{
+    "name": "tt",
+    "displayName": "Truss",
+    "description": "T4 generator for visual studio",
+    "version": "0.0.1",
+    "publisher": "bymayne",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Languages",
+        "Snippets"
+    ],
+    "main": "./out/src/extension",
+    "activationEvents": [
+        "onLanguage:t4",
+        "onCommand:extension.sayHello",
+        "onCommand:extension.transform_templates",
+        "onCommand:extension.transform_current_template"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "t4",
+            "aliases": ["T4", "tt"],
+            "extensions": [".tt"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "t4",
+            "scopeName": "text.t4",
+            "path": "./syntaxes/t4.tmLanguage.json"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
