@@ -12,7 +12,6 @@ export function activate(context: vscode.ExtensionContext)
 {
     let templateGenerator = new TemplateGenerator();
     let t4Diagonostics = new T4Diagonostics();
-    t4Diagonostics.ParseErrors("TESTING");
     t4Diagonostics.activate(context);
     templateGenerator.activate(context, t4Diagonostics);
     context.subscriptions.push(templateGenerator);

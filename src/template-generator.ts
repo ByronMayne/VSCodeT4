@@ -6,13 +6,15 @@ import * as path from 'path';
 import * as cp from 'child_process';
 
 // The path to the transfrom text exe.
-const EXE_PATH: string = 'C:\\Users\\byron\\tt\\lib\\Mono.TextTemplating\\Builds\\Windows\\Mono.TextTemplating.exe';
+const EXE_PATH: string = 'D:\\Repositories\\VSCodeT4\\lib\\Mono.TextTemplating\\Builds\\Windows\\Mono.TextTemplating.exe';
 const OUTPUT_EXTENSION: string = ".cs";
 import T4Diagonostics from './T4Diagonostics';
 
+
 export default class TemplateGenerator
 {
-    private errorHanlder: T4Diagonostics;
+    public errorHanlder: T4Diagonostics;
+    public name:string = "Byron";
 
     // Invoked when we activate our module.
     public activate(context: vscode.ExtensionContext, errorHandler:T4Diagonostics)
@@ -36,8 +38,8 @@ export default class TemplateGenerator
         fileName = fileName.replace(extension, OUTPUT_EXTENSION);
         // Create our output path. 
         let output = directory  + "\\" + fileName;
-        // Run it
-        cp.execFile(EXE_PATH, [input, output], this.OnTranformComplete);
+        // Run it with weird callback this was done to always preserve 'this'
+        cp.execFile(EXE_PATH, [input, output], (error, stdout, stderr) => this.OnTranformComplete(error, stdout, stderr));
     }
 
     // Invoked when the cp.exec command finishes
@@ -47,14 +49,12 @@ export default class TemplateGenerator
         if(error !== null)
         {
             // Show a header
-            window.showErrorMessage("Transform error! " + error.name);
-            console.log(stderr);
-            console.log(stdout);
-            //this.errorHanlder.ParseErrors("S");
+            window.showErrorMessage("Transfrom Error");
+            this.errorHanlder.ParseErrors(stdout);
         }
         else
         {
-            console.log(stdout);
+            console.log("Successful");
         }
     }
 

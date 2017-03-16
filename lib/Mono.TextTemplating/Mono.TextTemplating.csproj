@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,6 +40,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Json\TinyJSON.cs" />
     <Compile Include="Microsoft.VisualStudio.TextTemplating\DirectiveProcessor.cs" />
     <Compile Include="Microsoft.VisualStudio.TextTemplating\DirectiveProcessorException.cs" />
     <Compile Include="Microsoft.VisualStudio.TextTemplating\Engine.cs" />
@@ -61,12 +62,10 @@
     <Compile Include="Mono.TextTemplating\RecyclableAppDomain.cs" />
     <Compile Include="Mono.TextTemplating\FileUtil.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="TemplateResults.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Microsoft.VisualStudio.TextTemplating\" />
-    <Folder Include="Mono.TextTemplating\" />
-  </ItemGroup>
+  <ItemGroup />
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
@@ -77,11 +76,11 @@
     </MonoDevelop>
   </ProjectExtensions>
   <Target Name="Export Unix" AfterTargets="AfterBuild" Condition=" '$(OS)' == 'Unix'">
-    <Message Text="Copying $(TargetPath) -> $(ProjectDir)/Builds/Unix/" Importance="high"/>
-    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)/Builds/Unix/"/>
+    <Message Text="Copying $(TargetPath) -&gt; $(ProjectDir)/Builds/Unix/" Importance="high" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)/Builds/Unix/" />
   </Target>
   <Target Name="Export Windows" AfterTargets="AfterBuild" Condition=" '$(OS)' != 'Unix'">
-    <Message Text="Copying $(TargetPath) -> $(ProjectDir)/Builds/Windows/" Importance="high"/>
-   <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)/Builds/Windows/"/>
+    <Message Text="Copying $(TargetPath) -&gt; $(ProjectDir)/Builds/Windows/" Importance="high" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ProjectDir)/Builds/Windows/" />
   </Target>
 </Project>

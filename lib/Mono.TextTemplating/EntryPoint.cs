@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Linq;
+using TinyJson;
 
 namespace Mono.TextTemplating
 {
@@ -8,47 +9,64 @@ namespace Mono.TextTemplating
   {
     private const string HELP_ARG = "help";
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
     private static int Main(string[] args)
     {
-      int returnCode = 0;
-
+      TemplateResults results = new TemplateResults();
+      
       if (args.Length == 0)
       {
         ShowHelp();
-        returnCode = 1;
+        results.wasSuccssful = false;
       }
       else if (args[0] == HELP_ARG)
       {
         ShowHelp();
+        results.wasSuccssful = true;
       }
       else if (args.Length < 2)
       {
-        Console.WriteLine("Error! You must have at least two arguments");
         ShowHelp();
-        returnCode = 2;
+        results.wasSuccssful = false;
       }
       else
       {
         string input = args.First();
         string output = args.Last();
+        results.inputPath = input;
+        results.outputPath = output;
 
         // Create our generator
         TemplateGenerator geneator = new TemplateGenerator();
         // run it
-        Console.WriteLine("Transforming " + input + " to " + output);
         geneator.ProcessTemplate(input, output);
 
         if (geneator.Errors.HasErrors)
         {
           foreach(CompilerError error in geneator.Errors)
           {
-            Console.Error.WriteLine(error);
+            results.compileErrors.Add(error);
           }
-          returnCode = 5;
+          results.wasSuccssful = false;
+        }
+        else
+        {
+          results.wasSuccssful = true;
         }
       }
-      return returnCode;
+
+      // Write our output
+      string outputJson = JSONWriter.ToJson(results);
+      // Write it out
+      Console.WriteLine(outputJson);
+
+      return results.wasSuccssful ? 0 : 1;
     }
+
 
     private static void ShowHelp()
     {
