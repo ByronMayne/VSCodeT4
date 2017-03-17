@@ -6,7 +6,6 @@ import * as path from 'path';
 import * as cp from 'child_process';
 
 // The path to the transfrom text exe.
-const EXE_PATH: string = 'D:\\Repositories\\VSCodeT4\\lib\\Mono.TextTemplating\\Builds\\Windows\\Mono.TextTemplating.exe';
 const OUTPUT_EXTENSION: string = ".cs";
 import T4Diagonostics from './T4Diagonostics';
 
@@ -15,6 +14,11 @@ export default class TemplateGenerator
 {
     public errorHanlder: T4Diagonostics;
     public name:string = "Byron";
+
+    public getExePath() : string
+    {
+        return __dirname + "\\..\\..\\lib\\Mono.TextTemplating\\Builds\\Windows\\Mono.TextTemplating.exe"
+    }
 
     // Invoked when we activate our module.
     public activate(context: vscode.ExtensionContext, errorHandler:T4Diagonostics)
@@ -39,7 +43,7 @@ export default class TemplateGenerator
         // Create our output path. 
         let output = directory  + "\\" + fileName;
         // Run it with weird callback this was done to always preserve 'this'
-        cp.execFile(EXE_PATH, [input, output], (error, stdout, stderr) => this.OnTranformComplete(error, stdout, stderr));
+        cp.execFile(this.getExePath(), [input, output], (error, stdout, stderr) => this.OnTranformComplete(error, stdout, stderr));
     }
 
     // Invoked when the cp.exec command finishes
