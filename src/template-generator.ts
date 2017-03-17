@@ -40,7 +40,7 @@ export default class TemplateGenerator
         let extension = path.extname(input);
         // Replace the extesion with the correct one
         fileName = fileName.replace(extension, OUTPUT_EXTENSION);
-        // Create our output path. 
+        // Create our output path.
         let output = directory  + "\\" + fileName;
         // Run it with weird callback this was done to always preserve 'this'
         cp.execFile(this.getExePath(), [input, output], (error, stdout, stderr) => this.OnTranformComplete(error, stdout, stderr));
@@ -62,7 +62,7 @@ export default class TemplateGenerator
         }
     }
 
-    public dispose(): void 
+    public dispose(): void
     {
 
     }
